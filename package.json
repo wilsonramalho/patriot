@@ -7,7 +7,6 @@
     "gulp-autoprefixer": "latest",
     "gulp-cache": "latest",
     "gulp-clean": "latest",
-    "gulp-coffee": "latest",
     "gulp-concat": "latest",
     "gulp-imagemin": "latest",
     "gulp-jade": "latest",
