@@ -1,0 +1,25 @@
+head
+
+  meta(charset='utf-8')
+
+  - var cliente = cliente || "Nome do Cliente"
+  title #{cliente}
+
+  meta(name='author', content='Casullo Agência Digital - www.casulloweb.com.br')
+  meta(name='copyright', content='Casullo 2013')
+  meta(name='description', content='Código desenvolvido pela Casullo para o #{cliente}')
+
+  meta(name='apple-mobile-web-app-capable', content='yes')
+  meta(name='apple-mobile-web-app-status-bar-style', content='black')
+  meta(name='apple-mobile-web-app-title', content='#{cliente}')
+
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+
+  link(href='stylesheets/stylesheets.css', rel='stylesheet')
+
+  link(href='images/icn-32x32.png', rel='shortcut icon')
+  link(href='images/icn-152x152.png', rel='apple-touch-icon')
+
+  noscript
+    style(type='text/css')
+      |#content {display:block;}
