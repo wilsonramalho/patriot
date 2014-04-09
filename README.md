@@ -39,4 +39,4 @@
 * Interpret JADE files
 * Create a end user files in /build folder
 
-** Gulp Notify is included but disabled due to Windows incompatibility, if you are using Mac OS go ahead and have fun! **
+**Gulp Notify is included but disabled due to Windows incompatibility, if you are using Mac OS go ahead and have fun!**
