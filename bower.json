@@ -6,6 +6,7 @@
     "bootstrap": null,
     "jquery": null,
     "jasny-bootstrap": null,
-    "nprogress": null
+    "bootstrap-select":null,
+    "jquery.validation":null
   }
 }

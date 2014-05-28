@@ -5,7 +5,7 @@
   "devDependencies": {
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
-    "gulp-cache": "latest",
+    "gulp-newer": "latest",
     "gulp-clean": "latest",
     "gulp-concat": "latest",
     "gulp-imagemin": "latest",
