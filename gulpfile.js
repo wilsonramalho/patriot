@@ -93,7 +93,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('default', function() {
-  gulp.start('fonts', 'images', 'stylesheets', 'libraries', 'templates', 'custom-js');
+  gulp.start('fonts', 'images', 'stylesheets', 'libraries', 'templates');
 });
 
 gulp.task('watch', ['default'], function() {
