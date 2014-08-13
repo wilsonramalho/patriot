@@ -1,4 +1,5 @@
 bower_components
 node_modules
-
+source/images/pixel.png
+build/images/pixel.png
 .DS_Store

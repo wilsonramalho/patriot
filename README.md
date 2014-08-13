@@ -2,9 +2,9 @@
 
 > Another front-end framework based on Mark.
 
-![](http://img4.wikia.nocookie.net/__cb20140214081301/ironman/images/thumb/6/6d/Iron-Patriot.png/185px-Iron-Patriot.png)
+![](https://forrst-live.s3.amazonaws.com/multiposts/images/36290/original.png)
 
-`Version: 1.0.0`
+`Version: 1.1`
 
 
 ### Bower Install Dependencies
@@ -12,18 +12,16 @@
 * Bootstrap
 * Jquery
 * Jasny Bootstrap
-* Nprogress
 
 ### NPM Install Dependencies
 
 * Gulp
 	* Autoprefixer
-	* Cache
-	* Clean
+	* Newer
+	* Rimraf
 	* Concat
 	* Imagemin
 	* Jade
-	* JSHint
 	* less
 	* livereload
 	* minify-css
@@ -35,7 +33,7 @@
 
 * Compress images
 * Concat and minify JS
-* Compile LESS to CSS and minify
+* Compile LESS to CSS and minify it
 * Interpret JADE files
 * Create a end user files in /build folder
 

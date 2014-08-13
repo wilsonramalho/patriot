@@ -6,15 +6,13 @@
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-newer": "latest",
-    "gulp-clean": "latest",
+    "gulp-rimraf": "latest",
     "gulp-concat": "latest",
     "gulp-imagemin": "latest",
     "gulp-jade": "latest",
-    "gulp-jshint": "latest",
     "gulp-less": "latest",
     "gulp-livereload": "latest",
     "gulp-minify-css": "latest",
-    "gulp-notify": "latest",
     "gulp-uglify": "latest",
     "tiny-lr": "latest"
   }

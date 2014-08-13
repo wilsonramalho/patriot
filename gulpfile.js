@@ -1,12 +1,10 @@
 var gulp          = require('gulp'),
     autoprefixer  = require('gulp-autoprefixer'),
-    //cache         = require('gulp-cache'),
     newer         = require('gulp-newer'),
-    clean         = require('gulp-clean'),
+    rimraf        = require('gulp-rimraf'),
     concat        = require('gulp-concat'),
     imagemin      = require('gulp-imagemin'),
     jade          = require('gulp-jade'),
-    jshint        = require('gulp-jshint'),
     less          = require('gulp-less'),
     livereload    = require('gulp-livereload'),
     lr            = require('tiny-lr'),
@@ -57,10 +55,9 @@ gulp.task('libraries', function() {
     //'bower_components/jasny-bootstrap/js/inputmask.js',
     'bower_components/jasny-bootstrap/js/offcanvas.js',
     //'bower_components/jasny-bootstrap/js/rowlink.js',
-    'bower_components/bootstrap-select/bootstrap-select.js',
-    'bower_components/jquery.validation/dist/jquery.validate.js',
-    'source/scripts/jquery.scripts.js',
-    'source/scripts/jquery.calls.js'
+    //'bower_components/bootstrap-select/bootstrap-select.js',
+    //'bower_components/jquery.validation/dist/jquery.validate.js',
+    'source/scripts/jquery.scripts.js'
   ])
   .pipe(concat('libraries.js'))
   .pipe(uglify())
@@ -89,7 +86,7 @@ gulp.task('templates', function() {
 
 gulp.task('clean', function() {
   return gulp.src('build/', {read: false})
-  .pipe(clean());
+  .pipe(rimraf());
 });
 
 gulp.task('default', function() {

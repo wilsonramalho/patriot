@@ -5,8 +5,6 @@
   "devDependencies": {
     "bootstrap": null,
     "jquery": null,
-    "jasny-bootstrap": null,
-    "bootstrap-select":null,
-    "jquery.validation":null
+    "jasny-bootstrap": null
   }
 }
