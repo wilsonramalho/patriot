@@ -73,3 +73,18 @@
 	-webkit-background-clip: padding-box; 
 	background-clip:         padding-box; 
 }
+
+.placeholder(@color) {
+  &:-moz-placeholder {
+    color: @color;
+  }
+  &::-moz-placeholder {
+    color: @color;
+  }
+  &:-ms-input-placeholder {
+    color: @color;
+  }
+  &::-webkit-input-placeholder {
+    color: @color;
+  }
+}

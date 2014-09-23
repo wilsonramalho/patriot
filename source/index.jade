@@ -1,6 +1,8 @@
 doctype html
 
-html(lang='pt_BR')
+html(lang='pt-BR')
+
+	- var cliente = cliente || "Nome do Cliente"
 
 	include partials/head
 
@@ -9,4 +11,4 @@ html(lang='pt_BR')
 		div#content
 
 		include partials/footer
-		script(src='scripts/libraries.js')
+		script(src='scripts/libraries.js', async)

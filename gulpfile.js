@@ -12,12 +12,22 @@ var gulp          = require('gulp'),
     //notify        = require('gulp-notify'),
     server        = lr(),
     uglify        = require('gulp-uglify');
+    plumber        = require('gulp-plumber');
+    gutil        = require('gulp-util');
+
+var onError = function (err) {  
+  gutil.beep();
+  console.log(err);
+};
 
 gulp.task('fonts', function() {
   return gulp.src([
     'bower_components/bootstrap/fonts/**/*',
     'source/fonts/**/*'
   ])
+  .pipe(plumber({
+    errorHandler: onError
+  }))
   .pipe(gulp.dest('build/fonts/'))
   .pipe(livereload(server))
   //.pipe(notify({message: 'Fonts task complete.'}));
@@ -29,6 +39,9 @@ gulp.task('images', function() {
     'source/images/**/*.jpg',
     'source/images/**/*.png'
   ])
+  .pipe(plumber({
+    errorHandler: onError
+  }))
   .pipe(newer('build/images/'))
   .pipe(imagemin({interlaced: true, optimizationLevel: 5, progressive: true}))
   .pipe(gulp.dest('build/images/'))
@@ -59,6 +72,9 @@ gulp.task('libraries', function() {
     //'bower_components/jquery.validation/dist/jquery.validate.js',
     'source/scripts/jquery.scripts.js'
   ])
+  .pipe(plumber({
+    errorHandler: onError
+  }))
   .pipe(concat('libraries.js'))
   .pipe(uglify())
   .pipe(gulp.dest('build/scripts/'))
@@ -68,6 +84,9 @@ gulp.task('libraries', function() {
 
 gulp.task('stylesheets', function() {
   return gulp.src('source/stylesheets/stylesheets.less')
+  .pipe(plumber({
+    errorHandler: onError
+  }))
   .pipe(less())
   .pipe(autoprefixer('last 2 versions', 'ie 8', 'ie 9'))
   .pipe(minifycss({keepSpecialComments: 0, removeEmpty: true}))
@@ -78,6 +97,9 @@ gulp.task('stylesheets', function() {
 
 gulp.task('templates', function() {
   return gulp.src('source/*.jade')
+  .pipe(plumber({
+    errorHandler: onError
+  }))
   .pipe(jade({pretty: true}))
   .pipe(gulp.dest('build/'))
   .pipe(livereload(server))
@@ -86,6 +108,9 @@ gulp.task('templates', function() {
 
 gulp.task('clean', function() {
   return gulp.src('build/', {read: false})
+  .pipe(plumber({
+    errorHandler: onError
+  }))
   .pipe(rimraf());
 });
 
