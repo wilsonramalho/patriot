@@ -1,10 +1,11 @@
 {
   "name": "Patriot",
   "repository": "https://github.com/wilsonramalho/patriot",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "devDependencies": {
     "bootstrap": null,
     "jquery": null,
-    "jasny-bootstrap": null
+    "jasny-bootstrap": null,
+    "respond": null
   }
 }
