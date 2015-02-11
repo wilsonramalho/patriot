@@ -6,6 +6,7 @@
     "bootstrap": null,
     "jquery": null,
     "jasny-bootstrap": null,
-    "respond": null
+    "respond": null,
+    "fontawesome": null
   }
 }
