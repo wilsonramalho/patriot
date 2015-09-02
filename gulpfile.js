@@ -1,21 +1,20 @@
-var gulp          = require('gulp'),
-    autoprefixer  = require('gulp-autoprefixer'),
-    cache         = require('gulp-cache'),
-    rimraf        = require('gulp-rimraf'),
-    concat        = require('gulp-concat'),
-    imagemin      = require('gulp-imagemin'),
-    jade          = require('gulp-jade'),
-    less          = require('gulp-less'),
-    browserSync   = require('browser-sync'),
-    minifycss     = require('gulp-minify-css'),
-    uglify        = require('gulp-uglify'),
-    plumber       = require('gulp-plumber'),
-    gutil         = require('gulp-util'),
-    changed         = require('gulp-changed'),
-    filter          = require('gulp-filter'),
-    gulpif          = require('gulp-if'),
-    cached          = require('gulp-cached'),
-    jadeInheritance = require('gulp-jade-inheritance');
+var gulp = require('gulp');
+
+var del = require('del');
+var browserSync = require('browser-sync');
+
+var gutil = require('gulp-util');
+
+var plugins = require("gulp-load-plugins")({
+    pattern: ['gulp-*', 'gulp.*'],
+    replaceString: /\bgulp[\-.]/,
+    lazy: false,
+    rename: {
+      'gulp-minify-css' : 'minifycss',
+      'gulp-if' : 'gulpIf',
+      'gulp-jade-inheritance' : 'jadeInheritance'
+    }
+});
 
 var onError = function (err) {  
   gutil.beep();
@@ -27,7 +26,7 @@ gulp.task('fonts', function() {
     'bower_components/fontawesome/fonts/**/*',
     'source/fonts/**/*'
   ])
-  .pipe(plumber({
+  .pipe(plugins.plumber({
     errorHandler: onError
   }))
   .pipe(gulp.dest('build/fonts/'))
@@ -42,7 +41,7 @@ gulp.task('images', function() {
     'source/images/**/*.svg',
     'source/images/**/*.png'
   ])
-  .pipe(cache(imagemin({
+  .pipe(plugins.cache(plugins.imagemin({
     interlaced: true,
     optimizationLevel: 5,
     progressive: true
@@ -71,22 +70,22 @@ gulp.task('libraries', function() {
     //'bower_components/jasny-bootstrap/js/rowlink.js',
     'source/scripts/jquery.scripts.js'
   ])
-  .pipe(plumber({
+  .pipe(plugins.plumber({
     errorHandler: onError
   }))
-  .pipe(concat('libraries.js'))
-  .pipe(uglify())
+  .pipe(plugins.concat('libraries.js'))
+  .pipe(plugins.uglify())
   .pipe(gulp.dest('build/scripts/'))
 });
 
 gulp.task('stylesheets', function() {
   return gulp.src('source/stylesheets/stylesheets.less')
-  .pipe(plumber({
+  .pipe(plugins.plumber({
     errorHandler: onError
   }))
-  .pipe(less())
-  .pipe(autoprefixer('last 2 versions', 'ie 8', 'ie 9'))
-  .pipe(minifycss({keepSpecialComments: 0, removeEmpty: true}))
+  .pipe(plugins.less())
+  .pipe(plugins.autoprefixer('last 2 versions', 'ie 8', 'ie 9'))
+  .pipe(plugins.minifycss({keepSpecialComments: 0, removeEmpty: true}))
   .pipe(gulp.dest('build/stylesheets/'))
 });
 
@@ -94,34 +93,21 @@ gulp.task('templates', function() {
   return gulp.src([
     'source/**/*.jade'
   ])
-  .pipe(changed('build', {
+  .pipe(plugins.changed('build', {
     extension: '.html'
   }))
-  .pipe(gulpif(global.isWatching, cached('templates')))
-  .pipe(jadeInheritance({
+  .pipe(plugins.gulpIf(global.isWatching, plugins.cached('templates')))
+  .pipe(plugins.jadeInheritance({
     basedir: 'source'
   }))
-  .pipe(filter( function(file) {
+  .pipe(plugins.filter( function(file) {
     return !/\/_/.test(file.path) || !/^_/.test(file.relative);
   }))
-  .pipe(plumber())
-  .pipe(jade({
+  .pipe(plugins.plumber())
+  .pipe(plugins.jade({
     pretty: true
   }))
   .pipe(gulp.dest('build'));
-});
-
-gulp.task('clear', function() {
-  return gulp.src([
-    'build/*',
-    'build/fonts',
-    'build/images',
-    'build/scripts',
-    'build/stylesheets'
-  ], {
-    read: false
-  })
-  .pipe(rimraf());
 });
 
 gulp.task('build', ['clear'], function() {
@@ -134,19 +120,8 @@ gulp.task('build', ['clear'], function() {
   );
 });
 
-// Clear
-
-gulp.task('clear', function() {
-  return gulp.src([
-    'build/*',
-    'build/fonts',
-    'build/images',
-    'build/scripts',
-    'build/stylesheets'
-  ], {
-    read: false
-  })
-  .pipe(rimraf());
+gulp.task('clear', function(cb) {
+  del(['build/**'], cb)
 });
 
 gulp.task('setWatch', function() {

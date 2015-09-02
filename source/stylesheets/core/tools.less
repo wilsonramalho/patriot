@@ -1,11 +1,4 @@
 // TOOLS
-.fb-container {
-	.clearfix;
-	width: 810px;
-	margin: 0 auto;
-	position: relative;
-}
-
 .opacity (@opacity) {
 	opacity: @opacity;
 	@opacity-ie: @opacity * 100;
@@ -87,4 +80,20 @@
   &::-webkit-input-placeholder {
     color: @color;
   }
+}
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	height: 0; 
+	overflow: hidden;
+	margin-bottom: 20px;
+	iframe, object, embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
+	}	
 }

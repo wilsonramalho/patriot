@@ -4,4 +4,12 @@
 
 ![](https://forrst-live.s3.amazonaws.com/multiposts/images/36290/original.png)
 
-`Version: 2.0`
+`Version: 2.1`
+
+> Changelog
+
+Now using gulp-load-plugins to manage all used plugins in the project.
+
+New Clean task without gulp-rimraf.
+
+Change the 980px media querie to 992px to equals Bootstrap defaults.
