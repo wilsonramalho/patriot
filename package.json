@@ -8,17 +8,17 @@
     "del": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
-    "gulp-changed": "latest",
     "gulp-concat": "latest",
+    "gulp-htmlmin": "latest",
     "gulp-imagemin": "latest",
-    "gulp-jade": "latest",
     "gulp-less": "latest",
     "gulp-load-plugins": "latest",
-    "gulp-cssnano": "latest",
+    "gulp-minify-css": "latest",
     "gulp-plumber": "latest",
     "gulp-uglify": "latest",
     "gulp-util": "latest",
     "gulp-rename": "latest",
-    "gulp-jade-inheritance": "latest"
+    "gulp-sourcemaps": "latest",
+    "gulp-rimraf": "latest"
   }
 }

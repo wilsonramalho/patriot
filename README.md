@@ -4,6 +4,16 @@
 
 ![](https://forrst-live.s3.amazonaws.com/multiposts/images/36290/original.png)
 
+`Version: 3.0`
+
+> Changelog
+
+Remove jade support
+
+Fix watch task
+
+Font awesome included
+
 `Version: 2.1`
 
 > Changelog
