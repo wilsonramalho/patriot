@@ -1,7 +1,7 @@
 {
   "name": "Patriot",
   "repository": "https://github.com/wilsonramalho/patriot",
-  "version": "2.2.0",
+  "version": "3.0",
   "devDependencies": {
     "bootstrap": null,
     "jquery": null,
