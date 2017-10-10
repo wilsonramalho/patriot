@@ -1,8 +1,9 @@
 {
-  "name": "Patriot",
-  "license": "MIT",
-  "repository": "https://github.com/wilsonramalho/patriot",
-  "version": "3.0",
+  "name": "patriot",
+  "version": "3.0.0",
+  "description": "A front-end framework",
+  "main": "gulpfile.js",
+  "dependencies": {},
   "devDependencies": {
     "browser-sync": "latest",
     "del": "latest",
@@ -20,5 +21,18 @@
     "gulp-rename": "latest",
     "gulp-sourcemaps": "latest",
     "gulp-rimraf": "latest"
-  }
+  },
+  "scripts": {
+    "postinstall": "bower install && gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilsonramalho/patriot.git"
+  },
+  "author": "Wilson Cordeiro (wilsonramalho@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wilsonramalho/patriot/issues"
+  },
+  "homepage": "https://github.com/wilsonramalho/patriot#readme"
 }
