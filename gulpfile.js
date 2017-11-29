@@ -1,5 +1,6 @@
 var
   gutil       = require('gulp-util'),
+  notify       = require('gulp-notify'),
   browserSync = require('browser-sync'),
   del         = require('del'),
   gulp        = require('gulp'),
@@ -7,11 +8,8 @@ var
                   pattern: ['gulp-*', 'gulp.*'],
                   replaceString: /\bgulp[\-.]/,
                   lazy: false
-                }),
-  onError = function (err) {  
-    gutil.beep();
-    console.log(err);
-  };
+                });
+
 
 gulp.task('html', function() {
   gulp
@@ -26,14 +24,13 @@ gulp.task('html', function() {
       removeComments: true,
       removeEmptyAttributes: true
     }))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'))
+    .pipe(notify("HTML has been deployed"))
 });
 
 gulp.task('stylesheets', function() {
   return gulp.src('source/stylesheets/main.less')
-  .pipe($.plumber({
-    errorHandler: onError
-  }))
+  .pipe($.plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
   .pipe($.less())
   .pipe($.autoprefixer('last 2 versions', 'ie 8', 'ie 9'))
   .pipe($.minifyCss({
@@ -42,6 +39,7 @@ gulp.task('stylesheets', function() {
     }))
     .pipe($.sourcemaps.write('../maps'))
   .pipe(gulp.dest('build/assets/stylesheets/'))
+  .pipe(notify("CSS has been deployed"))
 });
 
 gulp.task('images', function() {
@@ -58,7 +56,8 @@ gulp.task('images', function() {
     optimizationLevel: 5,
     progressive: true
   }))
-  .pipe(gulp.dest('build/assets/images'));
+  .pipe(gulp.dest('build/assets/images'))
+  .pipe(notify("Images has been deployed"))
 });
 
 gulp.task('vendors', function() {
@@ -83,14 +82,13 @@ gulp.task('vendors', function() {
     //'bower_components/jasny-bootstrap/js/rowlink.js',
     'source/scripts/plugins.js'
     ])
-    .pipe($.plumber({
-    errorHandler: onError
-  }))
+    .pipe($.plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe($.sourcemaps.init({ loadMaps: true }))
     .pipe($.concat('vendors.js'))
     .pipe($.uglify())
     .pipe($.sourcemaps.write('../maps'))
-    .pipe(gulp.dest('build/assets/scripts'));
+    .pipe(gulp.dest('build/assets/scripts'))
+    .pipe(notify("JS Vendor has been deployed"))
 });
 
 gulp.task('scripts', function() {
@@ -99,14 +97,13 @@ gulp.task('scripts', function() {
       'source/scripts/scripts.js',
       'source/scripts/shame.js'
     ])
-    .pipe($.plumber({
-    errorHandler: onError
-  }))
+    .pipe($.plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe($.sourcemaps.init({ loadMaps: true }))
     .pipe($.concat('main.js'))
     .pipe($.uglify())
     .pipe($.sourcemaps.write('../maps'))
-    .pipe(gulp.dest('build/assets/scripts'));
+    .pipe(gulp.dest('build/assets/scripts'))
+    .pipe(notify("JS Scripts has been deployed"))
 });
 
 gulp.task('fonts', function() {
@@ -114,10 +111,9 @@ gulp.task('fonts', function() {
     'bower_components/fontawesome/fonts/**/*',
     'source/fonts/**/*'
   ])
-  .pipe($.plumber({
-    errorHandler: onError
-  }))
+  .pipe($.plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
   .pipe(gulp.dest('build/assets/fonts/'))
+  .pipe(notify("Fonts has been deployed"))
 });
 
 gulp.task('build', ['clear'], function() {

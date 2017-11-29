@@ -3,7 +3,9 @@
   "version": "3.0.0",
   "description": "A front-end framework",
   "main": "gulpfile.js",
-  "dependencies": {},
+  "dependencies": {
+    "node-notifier": "^5.1.2"
+  },
   "devDependencies": {
     "browser-sync": "latest",
     "del": "latest",
@@ -20,7 +22,8 @@
     "gulp-util": "latest",
     "gulp-rename": "latest",
     "gulp-sourcemaps": "latest",
-    "gulp-rimraf": "latest"
+    "gulp-rimraf": "latest",
+    "gulp-notify": "latest"
   },
   "scripts": {
     "postinstall": "bower install && gulp watch"
